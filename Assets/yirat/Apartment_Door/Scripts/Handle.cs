@@ -8,8 +8,8 @@ public class Handle : MonoBehaviour
     private bool playerInZone;
     private BoxCollider handleCollider;
     public DoorController DC;
-
-    public Animator player;
+    public Player player;
+    public Animator playerAnim;
 
     string _currentSelectedCharName;
 
@@ -23,7 +23,7 @@ public class Handle : MonoBehaviour
 
         if (_currentSelectedCharName == "Blindness" || _currentSelectedCharName == "Deaf")
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+            playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         }
     }
 
@@ -49,10 +49,11 @@ public class Handle : MonoBehaviour
         {
             if (this.gameObject.activeSelf)
             {
-                if (player) player.SetTrigger("lift");
+                if (playerAnim) playerAnim.SetTrigger("lift");
                 this.gameObject.SetActive(false);
                 playerInZone = false;
                 DC.gotKey = true;
+                player.hasHandle = true;
             }
 
             else

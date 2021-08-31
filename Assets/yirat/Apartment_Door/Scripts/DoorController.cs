@@ -20,6 +20,7 @@ public class DoorController : MonoBehaviour
     public DogController dog;
 
     public QuestGiver QG;
+    public Player player;
 
     enum DoorState
     {
@@ -92,6 +93,7 @@ public class DoorController : MonoBehaviour
         {
             doorHandle.SetActive(true);
             HandleConnected = true;
+            player.placeHandle = true;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && playerInZone)
@@ -109,6 +111,7 @@ public class DoorController : MonoBehaviour
                 doorState = DoorState.Opened;
                 StartCoroutine(dog.GetComponent<DogController>().nextDestination());
                 QG.openExplain();
+                player.passDoor3 = true;
                 StartCoroutine(loadMainMenuScene());
             }
             if (doorState == DoorState.Opened && !doorAnim.isPlaying)

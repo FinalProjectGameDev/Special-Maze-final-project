@@ -7,6 +7,8 @@ public class hasHearingAid : MonoBehaviour
     public bool onAid;
     public Camera cam;
     public GameObject player;
+    public Player playerP;
+
     public GameObject AidOnPlayer;
 
     string _currentSelectedCharName;
@@ -29,7 +31,7 @@ public class hasHearingAid : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-
+        
     }
 
     // Update is called once per frame
@@ -41,6 +43,7 @@ public class hasHearingAid : MonoBehaviour
             player.GetComponent<AudioListener>().enabled = true;
             this.gameObject.SetActive(false);
             AidOnPlayer.SetActive(true);
+            playerP.hasHearingAid = true;
         }
     }
 

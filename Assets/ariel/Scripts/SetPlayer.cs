@@ -21,12 +21,14 @@ public class SetPlayer : MonoBehaviour
 
     public GameObject Listener;
     public GameObject stepToHide;
+    public Player player;
     // public GameObject stepToHide2;
 
     // Start is called before the first frame update
     void Start()
     {
         _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
+        player.playerType = _currentSelectedCharName;
         Transform mm_player = minimap.GetComponent<Minimap>().player;
         minimap.cullingMask &= ~(1 << LayerMask.NameToLayer("sphireMinimapD"));
         minimap.cullingMask &= ~(1 << LayerMask.NameToLayer("sphireMinimapB"));
@@ -39,8 +41,8 @@ public class SetPlayer : MonoBehaviour
                 cam.gameObject.SetActive(true);
                 minimap.GetComponent<Minimap>().player = Deaf.transform;
                 minimap.cullingMask |= 1 << LayerMask.NameToLayer("sphireMinimapD");
-                Deaf.GetComponent<AudioListener>().enabled = false;
                 Listener.GetComponent<AudioListener>().enabled = true;
+                Deaf.GetComponent<AudioListener>().enabled = false;
                 break;
             case "Parkinson":
                 Parkinson.SetActive(true);

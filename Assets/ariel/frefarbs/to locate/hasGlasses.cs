@@ -6,22 +6,15 @@ using UnityEngine.Rendering.PostProcessing;
 public class hasGlasses : MonoBehaviour
 {
     public bool onGlasses;
+    public Player player;
 
-    public Animator player;
+    public Animator playerAnim;
     public Camera camera;
 
     public Camera minimap;
     public GameObject glassesOnPlayer;
 
     string _currentSelectedCharName;
-
-    //public bool hasTheRightGlasses;
-    //[SerializeField] Material color;
-    //[SerializeField] private int blure;
-    //[SerializeField] GameObject bodyGlasses;
-    //[SerializeField]  glassesManager gm;
-    //[SerializeField]  Color initColor;
-    //private Material[] matArr;
 
     void OnTriggerEnter(Collider other)
     {
@@ -35,17 +28,14 @@ public class hasGlasses : MonoBehaviour
 
     void Start()
     {
+        player.hasGlasses = false;
         _currentSelectedCharName = PlayerPrefs.GetString("CurrentSelectedCharacter", "Deaf");
 
         if (_currentSelectedCharName == "Blindness")
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+            playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         }
 
-        //color.color = initColor;
-        //matArr = bodyGlasses.GetComponent<MeshRenderer>().materials;
-        //matArr[0].color = initColor;
-        //matArr[1].color = initColor;
     }
 
     // Update is called once per frame
@@ -53,7 +43,7 @@ public class hasGlasses : MonoBehaviour
     {
         if (onGlasses && Input.GetKeyDown(KeyCode.E))
         {
-            if (player) player.SetTrigger("lift");
+            if (playerAnim) playerAnim.SetTrigger("lift");
             camera.gameObject.SetActive(true);
             PostProcessLayer layer = camera.GetComponent<PostProcessLayer>();
             layer.enabled = false;
@@ -61,7 +51,7 @@ public class hasGlasses : MonoBehaviour
             mmlayer.enabled = false;
             this.gameObject.SetActive(false);
             glassesOnPlayer.SetActive(true);
-
+            player.hasGlasses = true;
         }
     }
 
@@ -71,14 +61,7 @@ public class hasGlasses : MonoBehaviour
         gustyle.fontSize = 40;
         if (onGlasses)
         {
-            //if (gm.isFirst)
-            //{
-            //    GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press E to Get the glasses", gustyle);
-            //}
-            //else
-            //{
             GUI.Box(new Rect(Screen.width / 2 - 300, Screen.height - 60, 600, 50), "Press E to Get the glasses", gustyle);
-            //}
         }
     }
 }

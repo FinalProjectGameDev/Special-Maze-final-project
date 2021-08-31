@@ -17,6 +17,8 @@ public class DoorController1 : MonoBehaviour
     public Animator dogAnim;
 
     public hasDict hd;
+    public Player player;
+
 
     enum DoorState
     {
@@ -115,6 +117,7 @@ public class DoorController1 : MonoBehaviour
         dogAnim.SetBool("Found", true);
         dogAnim.GetComponent<AudioSource>().Stop();
         hd.passedFirstDoor = true;
+        player.passDoor1 = true;
     }
 
     void OnGUI()

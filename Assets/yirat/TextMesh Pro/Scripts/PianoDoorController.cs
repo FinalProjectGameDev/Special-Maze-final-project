@@ -24,6 +24,7 @@ public class PianoDoorController : MonoBehaviour
     public DogController dog;
 
     public QuestGiver QG;
+    public Player player;
 
     public MusicAfterPressButton musicAfterPressButton;
     enum DoorState
@@ -96,6 +97,7 @@ public class PianoDoorController : MonoBehaviour
                 doorAnim.Play("Door_Open");
                 doorState = DoorState.Opened;
                 QG.openExplain();
+                player.passDoor2 = true;
                 StartCoroutine(dog.GetComponent<DogController>().nextDestination());
             }
             if (doorState == DoorState.Opened && !doorAnim.isPlaying)

@@ -4218,6 +4218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 626056620}
   - component: {fileID: 626056619}
+  - component: {fileID: 626056621}
   m_Layer: 10
   m_Name: Charactor
   m_TagString: Player2
@@ -4248,6 +4249,7 @@ MonoBehaviour:
   Wheelchair: {fileID: 5786239301747733866}
   Listener: {fileID: 56631938}
   stepToHide: {fileID: 71657313}
+  player: {fileID: 626056621}
 --- !u!4 &626056620
 Transform:
   m_ObjectHideFlags: 0
@@ -4267,6 +4269,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &626056621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626056618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfba5a463b9275840bd58ac9da94043d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasDict: 0
+  hasGlasses: 0
+  hasHearingAid: 0
+  hasHandle: 0
+  placeHandle: 0
+  passDoor1: 0
+  passDoor2: 0
+  passDoor3: 0
+  playerType: 
 --- !u!1 &631824751
 GameObject:
   m_ObjectHideFlags: 0
@@ -7457,7 +7480,8 @@ MonoBehaviour:
   onDict: 0
   hasdict: 0
   passedFirstDoor: 0
-  player: {fileID: 0}
+  playerAnim: {fileID: 0}
+  player: {fileID: 626056621}
   UIC: {fileID: 3620910727771217241}
   Dict: {fileID: 5410190605465860863}
 --- !u!65 &967038311
@@ -17598,6 +17622,7 @@ MonoBehaviour:
   UIC: {fileID: 3620910727771217241}
   dog: {fileID: 3628307182505245504}
   QG: {fileID: 5212793275268431764}
+  player: {fileID: 626056621}
   musicAfterPressButton: {fileID: 5417029184811953461}
 --- !u!1 &602006081955968982
 GameObject:
@@ -23197,6 +23222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DC: {fileID: 0}
   player: {fileID: 0}
+  playerAnim: {fileID: 0}
 --- !u!4 &1193291064320509665
 Transform:
   m_ObjectHideFlags: 0
@@ -40783,6 +40809,7 @@ MonoBehaviour:
   dog: {fileID: 3628307182505245504}
   dogAnim: {fileID: 3677214004947326264}
   hd: {fileID: 967038310}
+  player: {fileID: 626056621}
 --- !u!1 &5082353622586618501
 GameObject:
   m_ObjectHideFlags: 0
@@ -42703,6 +42730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DC: {fileID: 6271187784915686418}
   player: {fileID: 0}
+  playerAnim: {fileID: 0}
 --- !u!4 &5690996413706699735
 Transform:
   m_ObjectHideFlags: 0
@@ -43536,6 +43564,7 @@ MonoBehaviour:
   onAid: 0
   cam: {fileID: 1789812014}
   player: {fileID: 0}
+  playerP: {fileID: 626056621}
   AidOnPlayer: {fileID: 5106377465232355696}
 --- !u!65 &6129475125712272160
 BoxCollider:
@@ -45351,6 +45380,7 @@ MonoBehaviour:
   doorHandle: {fileID: 6239385762122555208}
   dog: {fileID: 3628307182505245504}
   QG: {fileID: 5212793275268431764}
+  player: {fileID: 626056621}
 --- !u!111 &6277241555964048344
 Animation:
   m_ObjectHideFlags: 0
@@ -46208,6 +46238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DC: {fileID: 0}
   player: {fileID: 0}
+  playerAnim: {fileID: 0}
 --- !u!4 &6799192483946062244
 Transform:
   m_ObjectHideFlags: 0
@@ -53980,7 +54011,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DC: {fileID: 6271187784915686418}
-  player: {fileID: 0}
+  player: {fileID: 626056621}
+  playerAnim: {fileID: 0}
 --- !u!224 &7917329331610773133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -68632,7 +68664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onGlasses: 0
-  player: {fileID: 0}
+  player: {fileID: 626056621}
+  playerAnim: {fileID: 0}
   camera: {fileID: 1789812014}
   minimap: {fileID: 1477141179}
   glassesOnPlayer: {fileID: 1584865581790270444}
