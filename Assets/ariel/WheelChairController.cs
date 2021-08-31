@@ -25,7 +25,7 @@ public class WheelChairController : MonoBehaviour
     {
         float side = 0;
         float move = 0;
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+        if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow)))
         {
             side = 0;
             move = 1;

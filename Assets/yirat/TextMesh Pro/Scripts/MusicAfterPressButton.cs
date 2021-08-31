@@ -68,7 +68,7 @@ public class MusicAfterPressButton : MonoBehaviour
     {
         for (int i = 0; i < fourSounds.Length; i++)
         {
-            fourSounds[i].Play();
+            if (_currentSelectedCharName != "Deaf") fourSounds[i].Play();
             Debug.Log(fourSounds[i].name);
             yield return new WaitForSeconds(fourSounds[i].clip.length);
         }

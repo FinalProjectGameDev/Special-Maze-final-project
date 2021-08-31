@@ -19,6 +19,7 @@ public class SetPlayer : MonoBehaviour
     public GameObject Blindness;
     public GameObject Wheelchair;
 
+    public GameObject Listener;
     public GameObject stepToHide;
     // public GameObject stepToHide2;
 
@@ -39,12 +40,14 @@ public class SetPlayer : MonoBehaviour
                 minimap.GetComponent<Minimap>().player = Deaf.transform;
                 minimap.cullingMask |= 1 << LayerMask.NameToLayer("sphireMinimapD");
                 Deaf.GetComponent<AudioListener>().enabled = false;
+                Listener.GetComponent<AudioListener>().enabled = true;
                 break;
             case "Parkinson":
                 Parkinson.SetActive(true);
                 cam.gameObject.SetActive(true);
                 minimap.GetComponent<Minimap>().player = Parkinson.transform;
                 Parkinson.GetComponent<AudioListener>().enabled = true;
+                Listener.GetComponent<AudioListener>().enabled = false;
                 break;
             case "Blindness":
                 Blindness.SetActive(true);
@@ -56,12 +59,14 @@ public class SetPlayer : MonoBehaviour
                 minimap.GetComponent<Minimap>().player = Blindness.transform;
                 minimap.cullingMask |= 1 << LayerMask.NameToLayer("sphireMinimapB");
                 Blindness.GetComponent<AudioListener>().enabled = true;
+                Listener.GetComponent<AudioListener>().enabled = false;
                 break;
             case "Wheelchair":
                 Wheelchair.SetActive(true);
                 camWheel.gameObject.SetActive(true);
                 minimap.GetComponent<Minimap>().player = Wheelchair.transform;
                 Wheelchair.GetComponent<AudioListener>().enabled = true;
+                Listener.GetComponent<AudioListener>().enabled = false;
                 stepToHide.SetActive(false);
                 // stepToHide2.SetActive(false);
                 break;

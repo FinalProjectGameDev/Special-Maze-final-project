@@ -51,7 +51,7 @@ public class SoundPlayback : MonoBehaviour
             {
                 if (player) player.SetTrigger("push");
                 Debug.Log("Played");
-                sounds[theChoosenNum].Play();
+                if (_currentSelectedCharName != "Deaf") sounds[theChoosenNum].Play();
             }
         }
     }
