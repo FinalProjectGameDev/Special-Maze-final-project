@@ -26,4 +26,6 @@ public class PlayerData
         passDoor3 = player.passDoor3;
         playerType = player.playerType;
     }
+
+    
 }

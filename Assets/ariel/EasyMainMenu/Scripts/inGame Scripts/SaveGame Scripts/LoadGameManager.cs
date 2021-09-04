@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class LoadGameManager : MonoBehaviour {
@@ -22,14 +24,14 @@ public class LoadGameManager : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player2").transform;
 
         //retrieve which slot is loaded
-        #if !EMM_ES2
+        // #if !EMM_ES2
         loadedSlotId = PlayerPrefs.GetInt("slotLoaded_");
 
-        #else
-        if(ES2.Exists("slotLoaded_"))
-            loadedSlotId = ES2.Load<int>("slotLoaded_");
+        // #else
+        // if(ES2.Exists("slotLoaded_"))
+        //     loadedSlotId = ES2.Load<int>("slotLoaded_");
 
-        #endif
+        // #endif
 
         //search all save triggers
         allTriggersPresent();
@@ -57,12 +59,12 @@ public class LoadGameManager : MonoBehaviour {
             //find the trigger which was used to save this slot
 
             //1. retrieve save trigger's id from saved data
-            #if !EMM_ES2
+            // #if !EMM_ES2
             saveTriggerId = PlayerPrefs.GetInt("saveTriggerId_" + loadedSlotId);
-            #else
-            if(ES2.Exists("saveTriggerId_" + loadedSlotId))
-                saveTriggerId = ES2.Load<int>("saveTriggerId_" + loadedSlotId);
-            #endif
+            // #else
+            // if(ES2.Exists("saveTriggerId_" + loadedSlotId))
+            //     saveTriggerId = ES2.Load<int>("saveTriggerId_" + loadedSlotId);
+            // #endif
 
             //2. match it with all the available save triggers
             for (int i = 0; i<allTriggers.Length; i++)
@@ -74,9 +76,22 @@ public class LoadGameManager : MonoBehaviour {
                     //4. spawn player at that trigger's spawn point location
                     spawnPlayerAtPoint(allTriggers[i].spawnPoint);
                     saveName = allTriggers[i].saveName + loadedSlotId;
+
+                    string path = Application.persistentDataPath + "/player" + loadedSlotId + ".fun";
+                    BinaryFormatter form = new BinaryFormatter();
+                    FileStream file = new FileStream(path, FileMode.Open);
+
+                    PlayerData data = form.Deserialize(file) as PlayerData;
+                    file.Close();
+
+                    setData(data);
                 }
             }
         }
+    }
+
+    public void setData(PlayerData data){
+
     }
 
     public void spawnPlayerAtPoint(Transform spawnPoint) {

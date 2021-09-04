@@ -46,36 +46,36 @@ public class LoadSlotIdentifier : MonoBehaviour {
     void loadSlotData()
     {
         //get key
-        #if !EMM_ES2
-        quickSaveSlot = PlayerPrefs.GetInt("quickSaveSlot") == slotId ? true : false;
+        // #if !EMM_ES2
+        // quickSaveSlot = PlayerPrefs.GetInt("quickSaveSlot") == slotId ? true : false;
 
-#else
-        if(ES2.Exists("quickSaveSlot"))
-            quickSaveSlot = ES2.Load<int>("quickSaveSlot") == slotId ? true : false; ;
+// #else
+//         if(ES2.Exists("quickSaveSlot"))
+//             quickSaveSlot = ES2.Load<int>("quickSaveSlot") == slotId ? true : false; ;
 
-#endif
+// #endif
 
         //if it's quick save make it different
         //change color
-        if (quickSaveSlot)
-        {
-            //change color
-            Color c = Color.red;
-            c.a = 0.25f;
-            if (GetComponent<Image>())
-                GetComponent<Image>().color = c;
-            else if (button)
-            {
-                Color cyan = Color.cyan;
-                cyan.a = 0.25f;
-                ColorBlock _cb = button.colors;
-                _cb.normalColor = cyan;
-                button.colors = _cb;
-            }
-        }
+        // if (quickSaveSlot)
+        // {
+        //     //change color
+        //     Color c = Color.red;
+        //     c.a = 0.25f;
+        //     if (GetComponent<Image>())
+        //         GetComponent<Image>().color = c;
+        //     else if (button)
+        //     {
+        //         Color cyan = Color.cyan;
+        //         cyan.a = 0.25f;
+        //         ColorBlock _cb = button.colors;
+        //         _cb.normalColor = cyan;
+        //         button.colors = _cb;
+        //     }
+        // }
 
         //if there's already data present on this slot
-#if !EMM_ES2
+// #if !EMM_ES2
         if (PlayerPrefs.GetInt("slot_" + slotId) == slotId)
         {
             //then load it and set it at UI
@@ -88,51 +88,51 @@ public class LoadSlotIdentifier : MonoBehaviour {
                 savePercentage_text.text = "";
 
         }
-#else
-        if (ES2.Exists("slot_" + slotId)) {
+// #else
+//         if (ES2.Exists("slot_" + slotId)) {
 
-            if (ES2.Load<int>("slot_" + slotId) == slotId)
-            {
-                //then load it and set it at UI
-                saveName_text.text = ES2.Load<string>("slot_saveName_" + slotId);
-                sceneToLoad = ES2.Load<string>("slot_sceneName_" + slotId);
+//             if (ES2.Load<int>("slot_" + slotId) == slotId)
+//             {
+//                 //then load it and set it at UI
+//                 saveName_text.text = ES2.Load<string>("slot_saveName_" + slotId);
+//                 sceneToLoad = ES2.Load<string>("slot_sceneName_" + slotId);
 
-                if (!quickSaveSlot)
-                    savePercentage_text.text = ES2.Load<float>("slot_savePercentage_" + slotId) + "%";
-                else
-                    savePercentage_text.text = "";
+//                 if (!quickSaveSlot)
+//                     savePercentage_text.text = ES2.Load<float>("slot_savePercentage_" + slotId) + "%";
+//                 else
+//                     savePercentage_text.text = "";
 
-            }
-        }
+//             }
+//         }
         
-#endif
+// #endif
 
     }
 
     public void LoadSceneSaved()
     {
 
-#if PIXELCRUSHERS_SAVESYSTEM
+// #if PIXELCRUSHERS_SAVESYSTEM
 
-        if (PixelCrushers.SaveSystem.HasSavedGameInSlot(slotId))
-        {
-            Time.timeScale = 1;
+//         if (PixelCrushers.SaveSystem.HasSavedGameInSlot(slotId))
+//         {
+//             Time.timeScale = 1;
 
-            //load level via fader
-            Fader fader = FindObjectOfType<Fader>();
-            fader.FadeIntoLevel("LoadingScreen");
+//             //load level via fader
+//             Fader fader = FindObjectOfType<Fader>();
+//             fader.FadeIntoLevel("LoadingScreen");
 
-            //save which slot is loaded
-            PlayerPrefs.SetInt("slotLoaded_", slotId);
+//             //save which slot is loaded
+//             PlayerPrefs.SetInt("slotLoaded_", slotId);
 
-            //loads a specific scene
-            PlayerPrefs.SetString("sceneToLoad", sceneToLoad);
+//             //loads a specific scene
+//             PlayerPrefs.SetString("sceneToLoad", sceneToLoad);
 
             
-            return;
-        }
+//             return;
+//         }
 
-#endif
+// #endif
 
             //if there's a save game present at this slot
             if (sceneToLoad != "")
@@ -144,7 +144,7 @@ public class LoadSlotIdentifier : MonoBehaviour {
             if(player)
                 Destroy(player);
 
-#if !EMM_ES2
+// #if !EMM_ES2
 
             //save which slot is loaded
             PlayerPrefs.SetInt("slotLoaded_", slotId);
@@ -152,15 +152,15 @@ public class LoadSlotIdentifier : MonoBehaviour {
             //loads a specific scene
             PlayerPrefs.SetString("sceneToLoad", sceneToLoad);
 
-#else
+// #else
 
-            //save which slot is loaded
-            ES2.Save(slotId, "slotLoaded_");
+//             //save which slot is loaded
+//             ES2.Save(slotId, "slotLoaded_");
             
-            //loads a specific scene
-            ES2.Save(sceneToLoad, "sceneToLoad");
+//             //loads a specific scene
+//             ES2.Save(sceneToLoad, "sceneToLoad");
 
-#endif
+// #endif
 
             //load level via fader
             Fader fader = FindObjectOfType<Fader>();

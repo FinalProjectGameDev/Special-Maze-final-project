@@ -34476,6 +34476,7 @@ MonoBehaviour:
   QsaveName_text: {fileID: 0}
   QsavePercentage_text: {fileID: 0}
   QslotId: 0
+  player: {fileID: 626056621}
 --- !u!114 &3620910727771217244
 MonoBehaviour:
   m_ObjectHideFlags: 0

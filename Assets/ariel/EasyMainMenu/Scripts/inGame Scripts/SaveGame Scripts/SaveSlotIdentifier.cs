@@ -44,47 +44,47 @@ public class SaveSlotIdentifier : MonoBehaviour {
 
         }
 
-        //get key
-        quickSaveSlot = PlayerPrefs.GetInt("quickSaveSlot",6) == slotId ? true : false;
+        // //get key
+        // quickSaveSlot = PlayerPrefs.GetInt("quickSaveSlot",6) == slotId ? true : false;
         
-        #else
+        // #else
 
-        if(ES2.Exists("slot_" + slotId))
-        {
-            if(ES2.Load<int>("slot_" + slotId) == slotId)
-            {
-                //then load it and set it at UI
-                if (ES2.Exists("slot_saveName_" + slotId))
-                    saveName_text.text = ES2.Load<string>("slot_saveName_" + slotId);
+        // if(ES2.Exists("slot_" + slotId))
+        // {
+        //     if(ES2.Load<int>("slot_" + slotId) == slotId)
+        //     {
+        //         //then load it and set it at UI
+        //         if (ES2.Exists("slot_saveName_" + slotId))
+        //             saveName_text.text = ES2.Load<string>("slot_saveName_" + slotId);
 
-                if (ES2.Exists("slot_savePercentage_" + slotId))
-                    savePercentage_text.text = ES2.Load<float>("slot_savePercentage_" + slotId) + "%";
+        //         if (ES2.Exists("slot_savePercentage_" + slotId))
+        //             savePercentage_text.text = ES2.Load<float>("slot_savePercentage_" + slotId) + "%";
 
-            }
-        }
+        //     }
+        // }
 
-        //get key
-        if(ES2.Exists("quickSaveSlot"))
-            quickSaveSlot = ES2.Load<int>("quickSaveSlot") == slotId ? true : false;
+        // //get key
+        // if(ES2.Exists("quickSaveSlot"))
+        //     quickSaveSlot = ES2.Load<int>("quickSaveSlot") == slotId ? true : false;
 
         #endif
 
-        //if true
-        if (quickSaveSlot)
-        {
-            //change color
-            Color c = Color.red;
-            c.a = 0.25f;
-            GetComponent<Image>().color = c;
-            //disable btn
-            GetComponentInChildren<Button>().enabled = false;
-            //remove percentage from here
-            savePercentage_text.text = "";
+        // //if true
+        // if (quickSaveSlot)
+        // {
+        //     //change color
+        //     Color c = Color.red;
+        //     c.a = 0.25f;
+        //     GetComponent<Image>().color = c;
+        //     //disable btn
+        //     GetComponentInChildren<Button>().enabled = false;
+        //     //remove percentage from here
+        //     savePercentage_text.text = "";
 
-            //now finally sending the data
-            saveGameUI.quickSaveSlotData(saveName_text,savePercentage_text, slotId);
+        //     //now finally sending the data
+        //     saveGameUI.quickSaveSlotData(saveName_text,savePercentage_text, slotId);
 
-        }
+        // }
 
         if(slotId == 1)
         {

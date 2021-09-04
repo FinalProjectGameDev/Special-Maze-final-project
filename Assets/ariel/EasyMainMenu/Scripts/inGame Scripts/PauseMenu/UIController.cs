@@ -21,6 +21,15 @@ public class UIController : MonoBehaviour
     public GameObject explains;
     public GameObject explainsManeger;
 
+    private Canvas saveMenuCanvas;
+    private Canvas pauseMenuCanvas;
+    private Canvas minimapCanvas;
+    private Canvas keyboardCanvas;
+    private Canvas pianoCanvas;
+    private Canvas dictionaryCanvas;
+    private Canvas tutorialCanvas;
+    private Canvas explainsCanvas;
+
     public QuestGiver QG;
 
     Fader fader;
@@ -50,6 +59,7 @@ public class UIController : MonoBehaviour
     {
 
         //PlayerPrefs.DeleteAll();
+        setCanvases();
 
         //find fader
         fader = FindObjectOfType<Fader>();
@@ -61,10 +71,21 @@ public class UIController : MonoBehaviour
         openExplain();
     }
 
+    void setCanvases(){
+        saveMenuCanvas = saveMenu.GetComponent<Canvas>();
+        pauseMenuCanvas = pauseMenu.GetComponent<Canvas>();
+        minimapCanvas = minimap.GetComponent<Canvas>();
+        keyboardCanvas = keyboard.GetComponent<Canvas>();
+        pianoCanvas = piano.GetComponent<Canvas>();
+        dictionaryCanvas = dictionary.GetComponent<Canvas>();
+        tutorialCanvas = tutorial.GetComponent<Canvas>();
+        explainsCanvas = explains.GetComponent<Canvas>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (pauseIsOpen || keypadIsOpen || pianoIsOpen || dictIsOpen || explainIsOpen)
+        if (pauseIsOpen || keypadIsOpen || pianoIsOpen || dictIsOpen || explainIsOpen || saveMenu.active)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
