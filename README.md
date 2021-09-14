@@ -1,11 +1,11 @@
 <img width="465" src="https://user-images.githubusercontent.com/57855070/129936735-bf94243b-5b81-42b0-a4cd-512e6e0092e4.png">
 
 ## How to play:<br /> 
-You can play [Link]().
+You can play [Link](https://gamedev-tay.itch.io/the-spacial-maze).
 ## Unity version:<br />
 2019.4.16f1
 ## How to clone the project:<br />
-If you chose to Clone the project, note that you must first run Scene [X]() and then Scene [Y]() in order for Scene [Y]() to load all the initial settings it needs.
+If you chose to Clone the project, note that you must first run Scene [MainMenu](https://github.com/FinalProjectGameDev/Special-Maze-final-project/blob/master/Assets/Scenes/MainMenu.unity) and then Scene [LoadingScreen](https://github.com/FinalProjectGameDev/Special-Maze-final-project/blob/master/Assets/Scenes/LoadingScreen.unity) in order for Scene [maze](https://github.com/FinalProjectGameDev/Special-Maze-final-project/blob/master/Assets/Scenes/maze.unity) to load all the initial settings it needs.
 ## Background on the game:
 * **Goal:** <br />
 The object of the game is to increase awareness among the target audience regarding disabilities. <br />
@@ -14,7 +14,7 @@ In the game there is a choice between 4 characters, each with a different disabi
 all the characters will go through a maze generated and encounter the same missions, but one mission can be easy for one character and difficult for another character.
 
 ## More information:
-You can see more technical information and the process of creating the game in [WIKI](https://github.com/FinalProjectGameDev/The-Special-Maze/wiki)
+You can see more technical information and the process of creating the game in [WIKI](https://github.com/FinalProjectGameDev/Special-Maze-final-project/wiki)
 
 
 ## Project partners:
